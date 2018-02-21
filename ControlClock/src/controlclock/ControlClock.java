@@ -34,7 +34,9 @@ public class ControlClock extends Application {
 
     HBox hBox = new HBox(5);//create start and stop button
     Button btStop = new Button("Stop");
+    btStop.setStyle("-fx-background-color: maroon; -fx-text-fill: white;");
     Button btStart = new Button("Start");
+    btStart.setStyle("-fx-background-color: green; -fx-text-fill: white;");
     hBox.getChildren().addAll(btStop, btStart);
     hBox.setAlignment(Pos.CENTER);
     BorderPane pane = new BorderPane();
@@ -46,6 +48,7 @@ public class ControlClock extends Application {
     primaryStage.setTitle("Control Clock"); // Set the stage title
     primaryStage.setScene(scene); // Place the scene in the stage
     primaryStage.show(); // Display the stage
+    
 
     btStart.setOnAction(e -> clock.start());
     btStop.setOnAction(e -> clock.stop());
@@ -79,9 +82,7 @@ public class ControlClock extends Application {
       animation.play(); // Start animation
     }
 
-    /**
-     * Construct a clock with specified hour, minute, and second
-     */
+  
     public ClockPane(int hour, int minute, int second) {
       this.hour = hour;
       this.minute = minute;
@@ -104,9 +105,7 @@ public class ControlClock extends Application {
       animation.stop();
     }
 
-    /**
-     * Return hour
-     */
+  
     public int getHour() {
       return hour;
     }
@@ -146,12 +145,11 @@ public class ControlClock extends Application {
       this.minute = calendar.get(Calendar.MINUTE);
       this.second = calendar.get(Calendar.SECOND);
 
-      paintClock(); // Repaint the clock
+      paintClock(); 
     }
 
     
     private void paintClock() {
-      // Initialize clock parameters
       double clockRadius = 
           Math.min(getWidth(), getHeight()) * 0.8 * 0.5;
       double centerX = getWidth() / 2;
@@ -159,8 +157,8 @@ public class ControlClock extends Application {
 
       
       Circle circle = new Circle(centerX, centerY, clockRadius);// create circle
-      circle.setFill(Color.WHITE);
-      circle.setStroke(Color.BLACK);
+      circle.setFill(Color.SILVER);
+      circle.setStroke(Color.MAGENTA);
       Text t1 = new Text(centerX - 5, centerY - clockRadius + 12, "12");
       Text t2 = new Text(centerX - clockRadius + 3, centerY + 5, "9");
       Text t3 = new Text(centerX + clockRadius - 10, centerY + 3, "3");
